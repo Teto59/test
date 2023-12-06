@@ -1,0 +1,49 @@
+# Translating the provided specifications into Python code
+
+# Specifications:
+# 1. Pressing A button increases the frequency, B button decreases it.
+# 2. The sound changes pitch while the button is held down.
+# 3. When a button is released, the pitch resets.
+# 4. Frequency has upper and lower limits (100 to 500).
+# 5. The amount of change in frequency can be adjusted.
+
+# As I can't interact with physical buttons in this environment, I'll simulate the button presses in code.
+# I will define a function to modify the frequency based on a button press.
+
+def control_sound(frequency, change_amount, button_pressed, upper_limit=500, lower_limit=100):
+    """
+    Adjusts the frequency of the sound based on the button pressed.
+    
+    Args:
+    frequency (int): Current frequency of the sound.
+    change_amount (int): Amount to change the frequency by.
+    button_pressed (str): 'A' for increasing frequency, 'B' for decreasing.
+    upper_limit (int): Upper limit of the frequency.
+    lower_limit (int): Lower limit of the frequency.
+
+    Returns:
+    int: Adjusted frequency.
+    """
+    if button_pressed == 'A':
+        # Increase frequency, not exceeding upper limit
+        frequency = min(frequency + change_amount, upper_limit)
+    elif button_pressed == 'B':
+        # Decrease frequency, not going below lower limit
+        frequency = max(frequency - change_amount, lower_limit)
+
+    return frequency
+
+# Example usage:
+# Starting frequency is 300, change amount is 10
+# Simulate pressing 'A' button twice and 'B' button once
+
+start_frequency = 300
+change_amount = 10
+
+# Simulating button presses
+frequency_after_A = control_sound(start_frequency, change_amount, 'A')
+frequency_after_AA = control_sound(frequency_after_A, change_amount, 'A')
+frequency_after_AAB = control_sound(frequency_after_AA, change_amount, 'B')
+
+frequency_after_A, frequency_after_AA, frequency_after_AAB
+
